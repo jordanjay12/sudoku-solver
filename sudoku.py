@@ -4,29 +4,37 @@
 # Last Date Modified : Mar.21.2017
 
 import sys
-import os
 
 # Read Sudoku file from standard in
-exceptions = ['0', '.', '*', '?', os.linesep]
+exceptions = ['0', '.', '*', '?', "\n"]
 
 def read_puzzle():
   # this will change to standard input later
   # number of variables is gonna be number of clauses
+
+  result = []
+
   f = open('test_puzzle.txt', 'r')
+
+  count = 0
   row = 1
   col = 1
-  puzzle = f.read()
-  for symbol in puzzle: 
-    if symbol not in exceptions:
-      print(str(row)+ str(col) + symbol + " 0")
-    print("ROW = " + str(row) + " COL = " + str(col))
-    col = col + 1
+
+  puzzle = f.read().replace("\n", "")
+  for symbol in puzzle:
     if col == 10:
-      row = row + 1
+      row += 1
       col = 1
 
+    if symbol not in exceptions:
+      result.append(str(row)+ str(col) + symbol + " 0")
+      count += 1
 
+    col += 1
 
+  print("p cnf " + str(count) + " " + str(count))
+  for i in result:
+    print(i)
 
 # Each cell should contain at least one number
 def cell_atleast_one():
@@ -78,10 +86,10 @@ def three_square_atmost_once():
                 print("-{}{}{} -{}{}{} 0".format((3*a+u), (3*b+v), k, (3*a+w), (3*b+t), k))
 
 def main():
-  #cell_atleast_one()
-  #row_atmost_once()
-  #col_atmost_once()
-  #three_square_atmost_once()
+  cell_atleast_one()
+  row_atmost_once()
+  col_atmost_once()
+  three_square_atmost_once()
   read_puzzle()
 
 if __name__ == '__main__':
