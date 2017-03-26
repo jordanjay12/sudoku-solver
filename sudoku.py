@@ -4,9 +4,10 @@
 # Last Date Modified : Mar.21.2017
 
 import sys
+import os
 
 # Read Sudoku file from standard in
-exceptions = ['0', '.', '*', '?', "\n"]
+exceptions = ['0', '.', '*', '?', os.linesep]
 
 def read_puzzle():
   # this will change to standard input later
@@ -18,6 +19,7 @@ def read_puzzle():
   for symbol in puzzle: 
     if symbol not in exceptions:
       print(str(row)+ str(col) + symbol + " 0")
+    print("ROW = " + str(row) + " COL = " + str(col))
     col = col + 1
     if col == 10:
       row = row + 1
