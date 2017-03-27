@@ -8,8 +8,14 @@ def read_file():
   for symbol in solution:
   	result.append(symbol)
   	#Everything is now being stored in result list
-  result.pop(0)  #getting rid of the first element
+  satisfiable = result.pop(0)  #getting rid of the first element
   
+  if(satisfiable == 'UNSATISFIABLE'):
+  	print("The given puzzle is not satisfiable")
+  	return
+  else:
+  	print("The given puzzle is satisfiable")
+
   solved_board = []
   for element in result:
   	if(int(element) > 0):
