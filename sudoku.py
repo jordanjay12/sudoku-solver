@@ -11,10 +11,11 @@ exceptions = ['0', '.', '*', '?', "\n"]
 def read_puzzle():
   # this will change to standard input later
   # number of variables is gonna be number of clauses
-
+  # print 'Argument List:', str(sys.argv[1])
+  file = str(sys.argv[1])
   result = []
 
-  f = open('test_puzzle.txt', 'r')
+  f = open(file, 'r')
 
   count = 0
   row = 1
@@ -27,12 +28,14 @@ def read_puzzle():
       col = 1
 
     if symbol not in exceptions:
-      result.append(str(row)+ str(col) + symbol + " 0")
+      input_num = 81*(int(row)-1) + 9*(int(col)-1) + (int(symbol)-1) + 1
+      result.append(str(input_num) + " 0")
+      #result.append(str(row)+ str(col) + symbol + " 0")
       count += 1
 
     col += 1
 
-  print("p cnf " + str(count) + " " + str(count))
+  print("p cnf " + str(729) + " " + str(count))
   for i in result:
     print(i)
 
@@ -43,7 +46,8 @@ def cell_atleast_one():
   for i in range(1, 10):
     for j in range(1, 10):
       for k in range(1, 10):
-        result.append("{}{}{} ".format(i,j,k))
+        input_num = 81*(i-1) + 9*(j-1) + (k-1) + 1
+        result.append("{} ".format(input_num))
       print("".join(result) + "0")
       result = []
 
@@ -54,7 +58,10 @@ def row_atmost_once():
     for k in range(1, 10):
       for j in range(1, 9):
         for l in range(j+1, 10):
-          print("-{}{}{} -{}{}{} 0".format(i,j,k,i,l,k))
+          first_num = 81*(i-1) + 9*(j-1) + (k-1) + 1
+          second_num = 81*(i-1) + 9*(l-1) + (k-1) + 1
+          #print("-{}{}{} -{}{}{} 0".format(i,j,k,i,l,k))
+          print("-{} -{} 0".format(first_num, second_num))
 
 # Each number appears at most once in every column
 def col_atmost_once():
@@ -63,7 +70,10 @@ def col_atmost_once():
     for k in range(1, 10):
       for i in range(1,9):
         for l in range(i+1, 10):
-          print("-{}{}{} -{}{}{} 0".format(i,j,k,l,j,k))
+          first_num = 81*(i-1) + 9*(j-1) + (k-1) + 1
+          second_num = 81*(l-1) + 9*(j-1) + (k-1) +1 
+          #print("-{}{}{} -{}{}{} 0".format(i,j,k,l,j,k))
+          print("-{} -{} 0".format(first_num, second_num))
 
 # Each number appears at most once in every 3x3 subgrid
 def three_square_atmost_once():
@@ -74,7 +84,10 @@ def three_square_atmost_once():
         for u in range(1, 4):
           for v in range(1, 3):
             for w in range(v+1, 4):
-              print("-{}{}{} -{}{}{} 0".format((3*a+u), (3*b+v), k, (3*a+u), (3*b+w), k))
+              first_num = 81*((3*a+u)-1) + 9*((3*b+v)-1) + (k-1) +1 
+              second_num = 81*((3*a+u)-1) + 9*((3*b+w) -1) + (k-1) + 1
+              #print("-{}{}{} -{}{}{} 0".format((3*a+u), (3*b+v), k, (3*a+u), (3*b+w), k))
+              print("-{} -{} 0".format(first_num, second_num))
 
   for k in range(1, 10):
     for a in range(0, 3):
@@ -83,7 +96,10 @@ def three_square_atmost_once():
           for v in range(1, 4):
             for w in range(u+1, 4):
               for t in range(1, 4):
-                print("-{}{}{} -{}{}{} 0".format((3*a+u), (3*b+v), k, (3*a+w), (3*b+t), k))
+                first_num = 81*((3*a+u)-1) + 9*((3*b+v)-1) + (k-1) +1 
+                second_num = 81*((3*a+w)-1) + 9*((3*b+t) -1) + (k-1) + 1
+                #print("-{}{}{} -{}{}{} 0".format((3*a+u), (3*b+v), k, (3*a+w), (3*b+t), k))
+                print("-{} -{} 0".format(first_num, second_num))
 
 def main():
   cell_atleast_one()
