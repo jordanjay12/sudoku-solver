@@ -37,7 +37,7 @@ def read_puzzle():
   total_clauses = 8829 + count
   
 
-  print("p cnf " + str(729) + " " + str(count))
+  print("p cnf " + str(729) + " " + str(total_clauses))
   for i in result:
     print(i)
 
