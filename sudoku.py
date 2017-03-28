@@ -165,15 +165,15 @@ def main():
   row_atmost_once()
   col_atmost_once()
   three_square_atmost_once()
-  #read_puzzle()
+  read_puzzle()
 
   # The functions below are called for the extended encoding
   # They are unnecessary for solving sudoku problems, as the minimal encoding works
 
-  cell_atmost_once()
-  row_atleast_once()
-  col_atleast_once()
-  three_square_atleast_once()
+  #cell_atmost_once()
+  #row_atleast_once()
+  #col_atleast_once()
+  #three_square_atleast_once()
 
 if __name__ == '__main__':
   main()
