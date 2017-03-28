@@ -13,18 +13,14 @@ def read_file():
   if(satisfiable == 'UNSATISFIABLE'):
   	print("The given puzzle is not satisfiable")
   	return
-  else:
-  	print("The given puzzle is satisfiable")
 
   solved_board = []
   for element in result:
   	if(int(element) > 0):
   		solved_board.append(element)
-  #print("The board should only contain positive values now")
-  #print(solved_board)
 
 
-  # final_solution now contains the specific values for the sudoku puzzle, format later to look like a solve puzzle
+  # final_solution now contains the specific values for the sudoku puzzle, format later to look like a solved puzzle
   final_solution = []
   for element in solved_board:
   	i = (int(element)/81) +1
