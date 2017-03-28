@@ -33,13 +33,17 @@ def read_puzzle():
 
     col += 1
 
+  #This total clauses is dependent on using the minimal encoding
+  total_clauses = 8829 + count
+  
+
   print("p cnf " + str(729) + " " + str(count))
   for i in result:
     print(i)
 
 # Each cell should contain at least one number
 def cell_atleast_one():
-  print("p cnf 729 81")
+  #print("p cnf 729 81")
   result = []
   for i in range(1, 10):
     for j in range(1, 10):
@@ -51,7 +55,7 @@ def cell_atleast_one():
 
 # Each number appears at most once in every row
 def row_atmost_once():
-  print("p cnf 729 2916")
+  #print("p cnf 729 2916")
   for i in range(1, 10):
     for k in range(1, 10):
       for j in range(1, 9):
@@ -63,7 +67,7 @@ def row_atmost_once():
 
 # Each number appears at most once in every column
 def col_atmost_once():
-  print("p cnf 729 2916")
+  #print("p cnf 729 2916")
   for j in range(1, 10):
     for k in range(1, 10):
       for i in range(1,9):
@@ -75,7 +79,7 @@ def col_atmost_once():
 
 # Each number appears at most once in every 3x3 subgrid
 def three_square_atmost_once():
-  print("p cnf 729 2916")
+  #print("p cnf 729 2916")
   for k in range(1, 10):
     for a in range(0, 3):
       for b in range(0, 3):
@@ -161,11 +165,12 @@ def three_square_atleast_once():
 
 
 def main():
+  read_puzzle()
   cell_atleast_one()
   row_atmost_once()
   col_atmost_once()
   three_square_atmost_once()
-  read_puzzle()
+
 
   # The functions below are called for the extended encoding
   # They are unnecessary for solving sudoku problems, as the minimal encoding works
