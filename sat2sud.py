@@ -1,3 +1,15 @@
+# ---------------------
+# sat2sud.py
+#
+# converter for sat format into sudoku puzzle
+# in a read friendly form.
+#
+# miniSAT, and gsat
+#
+# Authors: Jordan Jay, Francisco Moon
+# Last Modified: Mar.28, 2017
+# ---------------------
+
 import sys
 
 def read_file():
