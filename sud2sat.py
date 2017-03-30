@@ -77,13 +77,11 @@ def read_puzzle():
 
   #This total clauses is dependent on using the minimal encoding
   total_clauses = 8829 + count
-  
-  print("p cnf " + str(729) + " " + str(total_clauses))
-  if gsat:
-    for i in result:
-      print(i)
-  else:
-    for i in result:
+
+  if not gsat:  
+    print("p cnf " + str(729) + " " + str(total_clauses))
+
+  for i in result:
       print(i)
 
 # Each cell should contain at least one number
@@ -239,7 +237,7 @@ def main():
 
   # The functions below are called for the extended encoding
   # They are unnecessary for solving sudoku problems, as the minimal encoding works
-  if (extended):
+  if extended:
     cell_atmost_once()
     row_atleast_once()
     col_atleast_once()
