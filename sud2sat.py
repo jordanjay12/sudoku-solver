@@ -24,7 +24,7 @@ file_name = ""
 
 # input argument check, 
 def read_input():
-  global gsat, file_name
+  global gsat, file_name, extended
 
   if len(sys.argv) < 4:
     print_input_error("Incorrect argument number.")
@@ -77,7 +77,8 @@ def read_puzzle():
 
   #This total clauses is dependent on using the minimal encoding
   total_clauses = 8829 + count
-
+  if extended:
+    total_clauses = 11988 + count
   if not gsat:  
     print("p cnf " + str(729) + " " + str(total_clauses))
 
@@ -86,8 +87,8 @@ def read_puzzle():
 
 # Each cell should contain at least one number
 def cell_atleast_one():
-  if not gsat:
-    print("p cnf 729 81")
+  #if not gsat:
+    #print("p cnf 729 81")
   result = []
   for i in range(1, 10):
     for j in range(1, 10):
@@ -102,8 +103,8 @@ def cell_atleast_one():
 
 # Each number appears at most once in every row
 def row_atmost_once():
-  if not gsat:
-    print("p cnf 729 2916")
+  #if not gsat:
+    #print("p cnf 729 2916")
   for i in range(1, 10):
     for k in range(1, 10):
       for j in range(1, 9):
@@ -118,8 +119,8 @@ def row_atmost_once():
 
 # Each number appears at most once in every column
 def col_atmost_once():
-  if not gsat:
-    print("p cnf 729 2916")
+  #if not gsat:
+    #print("p cnf 729 2916")
   for j in range(1, 10):
     for k in range(1, 10):
       for i in range(1,9):
@@ -134,8 +135,8 @@ def col_atmost_once():
 
 # Each number appears at most once in every 3x3 subgrid
 def three_square_atmost_once():
-  if not gsat:
-    print("p cnf 729 2916")
+  #if not gsat:
+    #print("p cnf 729 2916")
   for k in range(1, 10):
     for a in range(0, 3):
       for b in range(0, 3):
@@ -173,8 +174,8 @@ def three_square_atmost_once():
 
 # There is at most one number in each entry
 def cell_atmost_once():
-  if not gsat:
-    print("p cnf 729 2916")
+  #if not gsat:
+    #print("p cnf 729 2916")
   for x in range(1, 10):
     for y in range(1,10):
       for z in range(1,9):
@@ -185,8 +186,8 @@ def cell_atmost_once():
 
 # Each number appears at least once in each row
 def row_atleast_once():
-  if not gsat:
-    print("p cnf 729 81")
+  #if not gsat:
+    #print("p cnf 729 81")
   result = []
   for y in range(1,10):
     for z in range(1,10):
@@ -198,8 +199,8 @@ def row_atleast_once():
 
 # Each number appears at least once in each column
 def col_atleast_once():
-  if not gsat:
-    print("p cnf 729 81")
+  #if not gsat:
+    #print("p cnf 729 81")
   result = []
   for x in range(1, 10):
     for z in range(1, 10):
@@ -211,8 +212,8 @@ def col_atleast_once():
 
 # Each number appears at last once in each 3x3 sub-grid
 def three_square_atleast_once():
-  if not gsat:
-    print("p cnf 729 81")
+  #if not gsat:
+    #print("p cnf 729 81")
   result = []
   for z in range(1, 10):
     for i in range(0, 3):
