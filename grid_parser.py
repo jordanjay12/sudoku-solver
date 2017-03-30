@@ -1,16 +1,20 @@
-# parser idea
-
-import sys
-
+# ---------------------------------------------
+# grid_parser.py
+#
+# simple parser for easy_puzzles.txt
+# it reads each puzzles in the grids.txt into 
+# seperate test_file0.txt, test_file1.txt, ...
+#
+# Author: jiinmoon
+# Last modified: Mar.30 2017
+# ---------------------------------------------
 
 def main():
-  n = sys.argv[1]
-  j = 0
 
-  file_name = "grids.txt"
+  j = 0
+  file_name = "easy_puzzles.txt"
   
   in_f = open(file_name, 'r')
-
   data = in_f.read().split()
 
   while (data):
@@ -23,7 +27,6 @@ def main():
       out_f.write(data.pop(0) + "\n")
       i -= 1
     j += 1
-
 
 
 
